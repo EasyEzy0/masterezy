@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 
+
 void variablesPractice() {
     int age = 30;
     float pi = 3.14f;
