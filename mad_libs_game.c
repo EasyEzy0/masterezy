@@ -29,7 +29,7 @@ int main() {
     fgets(adjective3, 50, stdin);
     adjective3[strlen(adjective3) - 1] = '\0';
 
-    printf("The %s %s was so %s while %s and also very %s!!!\n",
+    printf("The %s %s was so %s while %s and also shy %s!!!\n",
            adjective1, noun, adjective2, verb, adjective3);
 
     return 0;
