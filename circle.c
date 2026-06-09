@@ -1,4 +1,3 @@
-//git add . git commit -m "Added C practice programs" git push
 #include <stdio.h>
 #include <math.h>
 #define PI 3.14159
