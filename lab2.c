@@ -1,190 +1,367 @@
 #include <stdio.h>
+#include <math.h>
 
-void lab1() {
-    int n;
-    printf("Enter number of people: ");
-    scanf("%d", &n);
-    int age, count = 0;
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &age);
-        if (age >= 13 && age <= 18)
-            count++;
-    }
-    printf("Teenagers: %d\n", count);
-}
-
-void lab2() {
-    int n;
-    printf("Enter number of people: ");
-    scanf("%d", &n);
-    int age, count = 0;
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &age);
-        if (age >= 18)
-            count++;
-    }
-    printf("Voters: %d\n", count);
-}
-
-void lab3() {
-    int n;
-    printf("Enter number of people: ");
-    scanf("%d", &n);
-    int age;
-    int child = 0, teen = 0, senior = 0;
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &age);
-        if (age <= 12)
-            child++;
-        else if (age >= 13 && age <= 19)
-            teen++;
-        else if (age >= 65)
-            senior++;
-    }
-    printf("Child: %d\nTeenager: %d\nSenior: %d\n", child, teen, senior);
-}
-
-void lab4() {
-    int n;
-    printf("Enter number of countries: ");
-    scanf("%d", &n);
-    int count = 0;
-    for (int i = 0; i < n; i++) {
-        long long population;
-        double area;
-        printf("Enter population and area: ");
-        scanf("%lld %lf", &population, &area);
-        if (area > 0 && (population / area) > 500)
-            count++;
-    }
-    printf("Countries with density > 500: %d\n", count);
-}
-
-void lab5() {
-    int n;
-    printf("Enter number of students: ");
-    scanf("%d", &n);
-    float cgpa;
-    int count = 0;
-    for (int i = 0; i < n; i++) {
-        scanf("%f", &cgpa);
-        if (cgpa >= 3.5)
-            count++;
-    }
-    printf("Students with CGPA >= 3.5: %d\n", count);
-}
-
-void lab6() {
-    int n;
-    printf("Enter number of students: ");
-    scanf("%d", &n);
-    float cgpa, sum = 0.0;
-    for (int i = 0; i < n; i++) {
-        scanf("%f", &cgpa);
-        sum += cgpa;
-    }
-    if (n > 0)
-        printf("Average CGPA: %.2f\n", sum / n);
-    else
-        printf("No students.\n");
-}
-
-void lab7() {
-    int n;
-    printf("Enter number of points: ");
-    scanf("%d", &n);
-    int q1 = 0, q2 = 0, q3 = 0, q4 = 0;
-    for (int i = 0; i < n; i++) {
-        float x, y;
-        scanf("%f %f", &x, &y);
-        if (x > 0 && y > 0)
-            q1++;
-        else if (x < 0 && y > 0)
-            q2++;
-        else if (x < 0 && y < 0)
-            q3++;
-        else if (x > 0 && y < 0)
-            q4++;
-    }
-
-    printf("Q1 = %d\nQ2 = %d\nQ3 = %d\nQ4 = %d\n", q1, q2, q3, q4);
-    int max = q1, q = 1;
-    if (q2 > max) { max = q2; q = 2; }
-    if (q3 > max) { max = q3; q = 3; }
-    if (q4 > max) { max = q4; q = 4; }
-    printf("Most points in Quadrant %d (%d points)\n", q, max);
-}
-
-void lab8() {
-    int n;
-    printf("Enter number of points: ");
-    scanf("%d", &n);
-    float x, y;
-    float sumX = 0, sumY = 0;
-    for (int i = 0; i < n; i++) {
-        scanf("%f %f", &x, &y);
-        sumX += x;
-        sumY += y;
-    }
-    if (n > 0)
-        printf("Centroid = (%.2f, %.2f)\n", sumX / n, sumY / n);
-    else
-        printf("No points.\n");
-}
-
-void lab9() {
-    int n, count = 0;
-    printf("Enter number of days's temperatures: ");
-    scanf("%d", &n);
-    float temp, sum = 0.0;
-    for (int i = 0; i < n; i++) {
-        printf("Enter temperature: ");
-        scanf(" %f", &temp);
-        if (temp > 30) {
-            sum += temp;
-            count++;
-        }
-    }
-    if (count > 0)
-        printf("Average (>30 deg C): %.2f\n", sum / count);
-    else
-        printf("No temperature exceeded 30°C\n");
-}
-
-int main() {
+int main()
+{
     int choice;
 
-    do {
-        printf("\n===== PRACTICE MENU =====\n");
-        printf("1. Teen or not\n");
-        printf("2. Voter Check\n");
-        printf("3. Age Check\n");
-        printf("4. Country Density\n");
-        printf("5. Secure CGPA\n");
-        printf("6. Average CGPA\n");
-        printf("7. Quadrant Finder\n");
-        printf("8. Centroid\n");
-        printf("9. Temperature\n");
-        printf("0. Exit\n");
+    printf("\n===== PRACTICE PROBLEMS MENU =====\n");
+    printf("1. Square and Cube\n");
+    printf("2. Area of Rectangle\n");
+    printf("3. Area and Circumference of Circle\n");
+    printf("4. Volume of Cylinder\n");
+    printf("5. Simple Interest\n");
+    printf("6. Celsius to Fahrenheit\n");
+    printf("7. Fahrenheit to Celsius\n");
+    printf("8. Distance Conversion\n");
+    printf("9. Minutes to Hours and Minutes\n");
+    printf("10. Days to Years, Months, Weeks and Days\n");
+    printf("11. Centimeter to Inch\n");
+    printf("12. Volume of Sphere and Cube\n");
+    printf("13. Movie Running Time Conversion\n");
+    printf("14. (A-B)/(C-D)\n");
+    printf("15. Distance Between Two Points\n");
+    printf("16. Area of Triangle (3 sides)\n");
+    printf("17. Area of Triangle (base & height)\n");
+    printf("18. Area and Perimeter of Square\n");
+    printf("19. Sum, Difference, Product, Quotient\n");
+    printf("20. Volume and Surface Area of Box\n");
+    printf("21. BMI Calculator\n");
+    printf("22. Fencing Cost of Field\n");
+    printf("23. Midpoint of Two Points\n");
+    printf("24. Taka Note Counter\n");
+    printf("25. Paint Required for Room\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
 
-        printf("Enter choice: ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-            case 1: lab1(); break;
-            case 2: lab2(); break;
-            case 3: lab3(); break;
-            case 4: lab4(); break;
-            case 5: lab5(); break;
-            case 6: lab6(); break;
-            case 7: lab7(); break;
-            case 8: lab8(); break;
-            case 9: lab9(); break;
-            case 0: printf("Exiting...\n"); break;
-            default: printf("Invalid choice.\n");
+    switch(choice)
+    {
+        case 1:
+        {
+            double n;
+            printf("Enter number: ");
+            scanf("%lf", &n);
+            printf("Square = %.2lf\n", n*n);
+            printf("Cube = %.2lf\n", n*n*n);
+            break;
         }
 
-    } while (choice != 0);
+        case 2:
+        {
+            double l,b;
+            printf("Enter length and breadth: ");
+            scanf("%lf%lf",&l,&b);
+            printf("Area = %.2lf\n", l*b);
+            break;
+        }
+
+        case 3:
+        {
+            double r;
+            printf("Enter radius: ");
+            scanf("%lf",&r);
+            printf("Area = %.2lf\n",3.14*r*r);
+            printf("Circumference = %.2lf\n",2*3.14*r);
+            break;
+        }
+
+        case 4:
+        {
+            double r,h;
+            printf("Enter radius and height: ");
+            scanf("%lf%lf",&r,&h);
+            printf("Volume = %.2lf\n",3.14*r*r*h);
+            break;
+        }
+
+        case 5:
+        {
+            double p,r,t;
+            printf("Enter principal, rate and time: ");
+            scanf("%lf%lf%lf",&p,&r,&t);
+            printf("Simple Interest = %.2lf\n",(p*r*t)/100);
+            break;
+        }
+
+        case 6:
+        {
+            double c;
+            printf("Enter Celsius: ");
+            scanf("%lf",&c);
+            printf("Fahrenheit = %.2lf\n",c*9/5+32);
+            break;
+        }
+
+        case 7:
+        {
+            double f;
+            printf("Enter Fahrenheit: ");
+            scanf("%lf",&f);
+            printf("Celsius = %.2lf\n",(f-32)*5/9);
+            break;
+        }
+
+        case 8:
+        {
+            double km;
+            printf("Enter distance in km: ");
+            scanf("%lf",&km);
+
+            printf("Meters = %.2lf\n",km*1000);
+            printf("Feet = %.2lf\n",km*3280.84);
+            printf("Inches = %.2lf\n",km*39370.1);
+            printf("Centimeters = %.2lf\n",km*100000);
+            break;
+        }
+
+        case 9:
+        {
+            int min;
+            printf("Enter minutes: ");
+            scanf("%d",&min);
+
+            printf("Hours = %d\n",min/60);
+            printf("Minutes = %d\n",min%60);
+            break;
+        }
+
+        case 10:
+        {
+            int days;
+            printf("Enter total days: ");
+            scanf("%d",&days);
+
+            int years = days/365;
+            days %= 365;
+
+            int months = days/30;
+            days %= 30;
+
+            int weeks = days/7;
+            days %= 7;
+
+            printf("Years = %d\nMonths = %d\nWeeks = %d\nDays = %d\n",
+                   years, months, weeks, days);
+            break;
+        }
+
+        case 11:
+        {
+            double cm;
+            printf("Enter length in cm: ");
+            scanf("%lf",&cm);
+
+            printf("Inches = %.2lf\n",cm/2.54);
+            break;
+        }
+
+        case 12:
+        {
+            double r,side;
+            printf("Enter sphere radius and cube side: ");
+            scanf("%lf%lf",&r,&side);
+
+            printf("Sphere Volume = %.2lf\n",(4.0/3.0)*3.1416*r*r*r);
+            printf("Cube Volume = %.2lf\n",side*side*side);
+            break;
+        }
+
+        case 13:
+        {
+            int h,m;
+            printf("Enter hour and minute: ");
+            scanf("%d%d",&h,&m);
+
+            int total = h*60+m;
+
+            printf("Running Time = %d minutes\n",total);
+            printf("Running Time = %.2f hours\n",total/60.0);
+            break;
+        }
+
+        case 14:
+        {
+            double A,B,C,D;
+            printf("Enter A B C D: ");
+            scanf("%lf%lf%lf%lf",&A,&B,&C,&D);
+
+            if(C-D==0)
+                printf("Division by zero not possible\n");
+            else
+                printf("Result = %.2lf\n",(A-B)/(C-D));
+
+            break;
+        }
+
+        case 15:
+        {
+            double x1,y1,x2,y2;
+
+            printf("Enter x1 y1 x2 y2: ");
+            scanf("%lf%lf%lf%lf",&x1,&y1,&x2,&y2);
+
+            printf("Distance = %.2lf\n",
+                   sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)));
+            break;
+        }
+
+        case 16:
+        {
+            double a,b,c,s,area;
+
+            printf("Enter three sides: ");
+            scanf("%lf%lf%lf",&a,&b,&c);
+
+            s=(a+b+c)/2;
+            area=sqrt(s*(s-a)*(s-b)*(s-c));
+
+            printf("Area = %.2lf\n",area);
+            break;
+        }
+
+        case 17:
+        {
+            double base,height;
+
+            printf("Enter base and height: ");
+            scanf("%lf%lf",&base,&height);
+
+            printf("Area = %.2lf\n",0.5*base*height);
+            break;
+        }
+
+        case 18:
+        {
+            double side;
+
+            printf("Enter side: ");
+            scanf("%lf",&side);
+
+            printf("Perimeter = %.2lf\n",4*side);
+            printf("Area = %.2lf\n",side*side);
+            break;
+        }
+
+        case 19:
+        {
+            double a,b;
+
+            printf("Enter two numbers: ");
+            scanf("%lf%lf",&a,&b);
+
+            printf("Sum = %.2lf\n",a+b);
+            printf("Difference = %.2lf\n",a-b);
+            printf("Product = %.2lf\n",a*b);
+
+            if(b!=0)
+                printf("Quotient = %.2lf\n",a/b);
+            else
+                printf("Division by zero not possible\n");
+
+            break;
+        }
+
+        case 20:
+        {
+            double l,w,h;
+
+            printf("Enter length width height: ");
+            scanf("%lf%lf%lf",&l,&w,&h);
+
+            printf("Volume = %.2lf\n",l*w*h);
+            printf("Surface Area = %.2lf\n",
+                   2*(l*w+l*h+w*h));
+            break;
+        }
+
+        case 21:
+        {
+            double weight,height;
+
+            printf("Enter weight(kg) and height(m): ");
+            scanf("%lf%lf",&weight,&height);
+
+            printf("BMI = %.2lf\n",
+                   weight/(height*height));
+            break;
+        }
+
+        case 22:
+        {
+            double l,w,cost;
+
+            printf("Enter length width and cost per meter: ");
+            scanf("%lf%lf%lf",&l,&w,&cost);
+
+            printf("Total Fencing Cost = %.2lf\n",
+                   2*(l+w)*cost);
+            break;
+        }
+
+        case 23:
+        {
+            double x1,y1,x2,y2;
+
+            printf("Enter x1 y1 x2 y2: ");
+            scanf("%lf%lf%lf%lf",&x1,&y1,&x2,&y2);
+
+            printf("Midpoint = (%.2lf , %.2lf)\n",
+                   (x1+x2)/2,(y1+y2)/2);
+            break;
+        }
+
+        case 24:
+        {
+            int amount;
+
+            printf("Enter amount in taka: ");
+            scanf("%d",&amount);
+
+            printf("500 = %d\n",amount/500);
+            amount%=500;
+
+            printf("100 = %d\n",amount/100);
+            amount%=100;
+
+            printf("50 = %d\n",amount/50);
+            amount%=50;
+
+            printf("20 = %d\n",amount/20);
+            amount%=20;
+
+            printf("10 = %d\n",amount/10);
+            amount%=10;
+
+            printf("5 = %d\n",amount/5);
+            amount%=5;
+
+            printf("1 = %d\n",amount);
+            break;
+        }
+
+        case 25:
+        {
+            double length,width,height,coverage;
+
+            printf("Enter room length width height: ");
+            scanf("%lf%lf%lf",&length,&width,&height);
+
+            printf("Enter paint coverage (sq.m per unit): ");
+            scanf("%lf",&coverage);
+
+            double area =
+                2*(length*height) +
+                2*(width*height);
+
+            printf("Wall Area = %.2lf sq.m\n",area);
+            printf("Paint Required = %.2lf units\n",
+                   area/coverage);
+            break;
+        }
+
+        default:
+            printf("Invalid Choice!\n");
+    }
 
     return 0;
 }
